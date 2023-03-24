@@ -9,15 +9,23 @@ public class Clinica {
     private String codclinica;
     private static ArrayList<Cliente> clientes= new ArrayList<>();
 
+    public Clinica (String nomedono) {
+        this.nomedono = nomedono;
+    }
+
+    public Clinica (String nomedono, ArrayList<Cliente> clientes) {
+        this.nomedono = nomedono;
+        this.clientes = clientes;
+    }
     public static double IMC(double peso, double altura){
-        Cliente cliente = new Cliente();
+        Cliente cliente = new Cliente(0, 0);
         double imc = peso / (altura * altura);
         return imc;
     }
 
     public static void criaCliente() {
         Scanner scanner = new Scanner(System.in);
-        Cliente cliente = new Cliente();
+        Cliente cliente = new Cliente(0, 0);
         System.out.println("Informe o nome:");
         cliente.setNome(scanner.nextLine());
         System.out.println("Informe o Peso:");

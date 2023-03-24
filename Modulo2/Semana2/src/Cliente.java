@@ -7,6 +7,17 @@ public class Cliente {
     private double altura;
     private double idade;
 
+    public Cliente(double peso, double altura) {
+           this.peso = peso;
+           this.altura = altura;
+    }
+
+    public Cliente(double peso, double altura, String nome, double idade) {
+        this.peso = peso;
+        this.altura = altura;
+        this.nome = nome;
+        this.idade = idade;
+    }
 
     public void setNome(String nome) {
         this.nome = nome;
