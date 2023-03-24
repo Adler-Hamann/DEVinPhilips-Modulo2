@@ -34,6 +34,13 @@ public class Clinica {
 
     }
 
+    public ArrayList<Cliente> retornaClientes() {
+        for (int i = 0; i < clientes.size(); i++) {
+            System.out.println(clientes.get(i).getNome());
+        }
+        return clientes;
+    }
+
     public static void criaCliente() {
         Scanner scanner = new Scanner(System.in);
         Cliente cliente = new Cliente(0, 0);

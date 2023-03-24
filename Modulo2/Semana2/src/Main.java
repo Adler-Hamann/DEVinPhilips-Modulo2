@@ -7,5 +7,6 @@ public class Main {
         clinica.criaCliente();
         System.out.println("Digite o id do cliente e o peso que deseja alterar, nesta ordem.");
         clinica.tratamento(scanner.nextInt(), scanner.nextDouble());
+        clinica.retornaClientes();
     }
 }
