@@ -23,6 +23,17 @@ public class Clinica {
         return imc;
     }
 
+    public void tratamento(int id) {
+        try{
+            clientes.get(id).setPeso(clientes.get(id).getPeso()-5.0);
+            System.out.println(clientes.get(id).getPeso());
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("Cliente não identificado");
+
+        }
+
+    }
+
     public static void criaCliente() {
         Scanner scanner = new Scanner(System.in);
         Cliente cliente = new Cliente(0, 0);
