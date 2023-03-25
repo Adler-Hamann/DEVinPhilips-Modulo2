@@ -13,7 +13,7 @@ public class ContaCorrente extends Conta implements Operavel{
 
     }
     public void obterSaldoAtual(){
-        
+
     }
 
 }
