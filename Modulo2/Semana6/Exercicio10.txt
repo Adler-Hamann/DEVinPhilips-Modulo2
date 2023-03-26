@@ -1,0 +1,12 @@
+Os tipos de banco de dados são divididos em:
+- Relacionais (Utilizam SQL):
+Oracle;
+MySQL;
+Access;
+PostgreSQL.
+
+- Não-Relacionais (Utilizam NoSQL):
+NoSQL;
+MongoDB;
+Redis;
+Membase.
