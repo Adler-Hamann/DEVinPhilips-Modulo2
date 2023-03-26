@@ -1,0 +1,2 @@
+O modelo conceitual de dados é a forma na qual você cria um banco de dados utilizando apenas modelos de relacionamento, utilizando entidades para demonstrar tabelas
+e vetores para mostrar o relacionamento entre tabelas. Ele é muito utilizado para por suas ideias de maneira organizada antes de criar o próprio banco de dados.
