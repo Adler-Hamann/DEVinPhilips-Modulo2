@@ -48,20 +48,17 @@ CREATE TABLE matricula
     PRIMARY KEY (id)
 );
 
-CREATE SEQUENCE matricula START WITH 0 INCREMENT BY 1 MINVALUE 0;
+CREATE SEQUENCE matriculas START WITH 0 INCREMENT BY 1 MINVALUE 0;
 CREATE SEQUENCE codigo START WITH 0 INCREMENT BY 1 MINVALUE 0;
---DROP TABLE alunos;
---DROP TABLE professores;
---DROP TABLE cursos;
---DROP TABLE matricula;
+
 
 INSERT INTO professores (nome, sobrenome, endereço, telefone, email, datanasc, nascionalidade) VALUES ('Severino', 'Daniel Bruno Assunção', 'PA', '(79) 3759-8975', 'severinodanielassuncao@wredenborg.se', '24/02/1970', 'brasileiro');
 INSERT INTO professores (nome, sobrenome, endereço, telefone, email, datanasc, nascionalidade) VALUES ('João', 'Henrique Pires', 'SC', '(49) 3767-5187', 'joao_henrique_pires@sdrifs.com.br', '17/01/1992', 'brasileiro');
 INSERT INTO professores (nome, sobrenome, endereço, telefone, email, datanasc, nascionalidade) VALUES ('Lucca', 'Osvaldo Francisco Teixeira', 'SP', '(68) 2692-4206', 'lucca.osvaldo.teixeira@ruizonline.com.br', '07/02/1991', 'brasileiro');
 
-INSERT INTO alunos (nome, sobrenome, matricula, telefone, email, datanasc, nascionalidade, mediageral) VALUES ('Tereza', 'Benedita Sabrina Castro', matricula.nextval,'(48) 2786-6856', 'tereza-castro94@slb.com', '09/03/1947', 'brasileiro', 7.5);
-INSERT INTO alunos (nome, sobrenome, matricula, telefone, email, datanasc, nascionalidade, mediageral) VALUES ('Jennifer', 'Francisca Beatriz da Mota', matricula.nextval, '(66) 3701-9737', 'jennifer.francisca.damota@yahoo.co.uk', '19/02/1987', 'britanica', 8.5);
-INSERT INTO alunos (nome, sobrenome, matricula, telefone, email, datanasc, nascionalidade, mediageral) VALUES ('Isabela', 'Raquel Carolina das Neves', matricula.nextval,'(82) 3529-4612', 'isabela-dasneves70@gvmail.br', '18/03/1986', 'brasileiro', 9.0);
+INSERT INTO alunos (nome, sobrenome, matricula, telefone, email, datanasc, nascionalidade, mediageral) VALUES ('Tereza', 'Benedita Sabrina Castro', matriculas.nextval,'(48) 2786-6856', 'tereza-castro94@slb.com', '09/03/1947', 'brasileiro', 7.5);
+INSERT INTO alunos (nome, sobrenome, matricula, telefone, email, datanasc, nascionalidade, mediageral) VALUES ('Jennifer', 'Francisca Beatriz da Mota', matriculas.nextval, '(66) 3701-9737', 'jennifer.francisca.damota@yahoo.co.uk', '19/02/1987', 'britanica', 8.5);
+INSERT INTO alunos (nome, sobrenome, matricula, telefone, email, datanasc, nascionalidade, mediageral) VALUES ('Isabela', 'Raquel Carolina das Neves', matriculas.nextval,'(82) 3529-4612', 'isabela-dasneves70@gvmail.br', '18/03/1986', 'brasileiro', 9.0);
 
 INSERT INTO cursos (nome, codigo, tipo, num_alunos, id_professor) VALUES ('Biologia', codigo.nextval, 'Presencial', 45, 3);
 INSERT INTO cursos (nome, codigo, tipo, num_alunos, id_professor) VALUES ('Matemática', codigo.nextval, 'Presencial', 50, 1);
@@ -69,14 +66,21 @@ INSERT INTO cursos (nome, codigo, tipo, num_alunos, id_professor) VALUES ('Histó
 
 INSERT INTO matricula (media_aluno, id_curso, id_aluno) VALUES (8.0, 1, 1);
 INSERT INTO matricula (media_aluno, id_curso, id_aluno) VALUES (7.0, 2, 3);
-INSERT INTO matricula (media_aluno, id_curso, id_aluno) VALUES (9.3, 3, 2);
+INSERT INTO matricula (media_aluno, id_curso, id_aluno) VALUES (9.0, 3, 2);
 
 UPDATE alunos SET mediageral = 9.0 WHERE nome = 'Jennifer';
 UPDATE cursos SET tipo = 'EAD' WHERE id_professor IN (SELECT id FROM professores WHERE endereço <> 'SC');
 DELETE FROM cursos WHERE nome = 'História';
 
 commit;
+--DROP TABLE alunos;
+--DROP TABLE professores;
+--DROP TABLE cursos;
+--DROP TABLE matricula;
 
-SELECT * FROM sys.professores;
-SELECT * FROM sys.alunos;
-SELECT * FROM sys.cursos;
+SELECT * FROM cursos WHERE num_alunos > 30 AND tipo = 'Presencial';
+SELECT * FROM professores WHERE nascionalidade = 'brasileiro';
+SELECT * FROM alunos WHERE nome LIKE 'J%';
+SELECT * FROM alunos WHERE mediageral > 7 ORDER BY mediageral DESC;
+SELECT a.* FROM alunos a JOIN matricula m ON a.id = m.id_aluno
+JOIN cursos c ON m.id_curso = c.id WHERE c.tipo = 'EAD';
