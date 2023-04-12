@@ -10,6 +10,10 @@ import java.util.List;
 public class ClienteRepository{
     private static  List <ClienteEntity> listaClientes = new ArrayList <>();
     private static ClienteRepository lista;
+
+    public void cadastraCliente(ClienteEntity cliente){
+        listaClientes.add(cliente);
+    }
     public List<ClienteEntity> resgatarClientes(){
         return listaClientes;
     }

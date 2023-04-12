@@ -14,6 +14,12 @@ public class ClienteController {
     public ClienteController (ClienteService servico) {
         this.servico = servico;
     }
+
+    @PostMapping
+    public void cadastrarCliente(@RequestBody ClienteEntity cliente){
+        servico.cadastraClienteService(cliente);
+    }
+
     @GetMapping
     public List<ClienteEntity> buscarClientes(){
        return servico.resgataClientesService();

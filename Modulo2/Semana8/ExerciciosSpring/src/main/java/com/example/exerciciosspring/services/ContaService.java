@@ -15,6 +15,14 @@ public class ContaService {
     public ContaService (ContaRepository repositorio) {
         this.listaConta = repositorio;
     }
+
+    public void criaContaService(Integer id){
+        ContaEntity conta = new ContaEntity();
+        conta.setSaldo(0.0);
+        conta.setIdCliente(id);
+        conta.setIdConta(listaConta.resgataContas().size());
+        listaConta.criaConta(conta);
+    }
     public List<ContaEntity> buscaContasService() {
         return listaConta.resgataContas();
     }

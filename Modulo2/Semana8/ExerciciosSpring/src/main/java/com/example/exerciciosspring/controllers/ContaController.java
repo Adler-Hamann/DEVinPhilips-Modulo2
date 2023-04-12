@@ -15,6 +15,12 @@ public class ContaController {
     public ContaController (ContaService servico) {
         this.servicoConta = servico;
     }
+
+    @PostMapping
+    public void criarConta(@RequestParam Integer id) {
+        servicoConta.criaContaService(id);
+    }
+
     @GetMapping
     public List<ContaEntity> buscaContas() {
         return servicoConta.buscaContasService();

@@ -13,6 +13,10 @@ public class ContaRepository {
         return listaContas;
     }
 
+    public void criaConta(ContaEntity conta){
+        listaContas.add(conta);
+    }
+
     public ContaEntity resgataConta(Integer id) {
         return listaContas.get(id);
     }

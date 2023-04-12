@@ -6,6 +6,7 @@ public class ContaEntity {
     @PositiveOrZero
     private Double saldo;
     private Integer idCliente;
+    private Integer idConta;
 
     public ContaEntity(){
 
@@ -29,5 +30,13 @@ public class ContaEntity {
 
     public void setIdCliente(Integer idCliente) {
         this.idCliente = idCliente;
+    }
+
+    public Integer getIdConta() {
+        return idConta;
+    }
+
+    public void setIdConta(Integer idConta) {
+        this.idConta = idConta;
     }
 }

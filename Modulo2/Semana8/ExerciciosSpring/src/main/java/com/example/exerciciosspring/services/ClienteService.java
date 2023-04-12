@@ -13,6 +13,12 @@ public class ClienteService {
     public ClienteService (ClienteRepository cliente) {
         this.listagem = cliente;
     }
+
+    public void cadastraClienteService(ClienteEntity cliente) {
+        Integer novoId = listagem.resgatarClientes().size();
+        cliente.setId(novoId);
+        listagem.cadastraCliente(cliente);
+    }
     public List<ClienteEntity> resgataClientesService(){
         return listagem.resgatarClientes();
     }
