@@ -8,7 +8,8 @@ import java.util.List;
 
 @Repository
 public class ClienteRepository{
-    List <ClienteEntity> listaClientes = new ArrayList <>();
+    private static  List <ClienteEntity> listaClientes = new ArrayList <>();
+    private static ClienteRepository lista;
     public List<ClienteEntity> resgatarClientes(){
         return listaClientes;
     }
@@ -22,8 +23,16 @@ public class ClienteRepository{
 
     public void alterarCliente(Integer id, ClienteEntity novoCliente) {
         this.listaClientes.set(id, novoCliente);
+    }
+
+    public static ClienteRepository getInstance() {
+        if (lista == null) {
+            lista = new ClienteRepository();
+        }
+        return lista;
 
     }
+
 
 
 }

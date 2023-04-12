@@ -9,7 +9,10 @@ import java.util.List;
 @Service
 public class ClienteService {
 
-    ClienteRepository listagem = new ClienteRepository();
+    private final ClienteRepository listagem;
+    public ClienteService (ClienteRepository cliente) {
+        this.listagem = cliente;
+    }
     public List<ClienteEntity> resgataClientesService(){
         return listagem.resgatarClientes();
     }

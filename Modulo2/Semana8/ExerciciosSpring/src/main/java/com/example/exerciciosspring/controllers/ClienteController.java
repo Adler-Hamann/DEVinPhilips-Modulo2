@@ -9,8 +9,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/cliente")
 public class ClienteController {
-    ClienteService servico = new ClienteService();
+    private final ClienteService servico;
 
+    public ClienteController (ClienteService servico) {
+        this.servico = servico;
+    }
     @GetMapping
     public List<ClienteEntity> buscarClientes(){
        return servico.resgataClientesService();

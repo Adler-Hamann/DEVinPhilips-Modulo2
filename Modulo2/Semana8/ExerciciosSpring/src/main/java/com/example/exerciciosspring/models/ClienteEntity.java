@@ -1,6 +1,7 @@
 package com.example.exerciciosspring.models;
 import org.hibernate.validator.constraints.br.CPF;
 public class ClienteEntity {
+    private Integer id;
     private String nome;
     @CPF
     private String cpf;
@@ -8,8 +9,8 @@ public class ClienteEntity {
     public ClienteEntity() {
 
     }
-    public ClienteEntity(String nome, String cpf) {
-
+    public ClienteEntity(Integer id, String nome, String cpf) {
+        this.id = id;
         this.nome = nome;
         this.cpf = cpf;
     }
@@ -28,5 +29,13 @@ public class ClienteEntity {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
