@@ -48,4 +48,16 @@ public class ContaService {
             throw new Exception("Saldo negativo não permitido");
         }
     }
+    public void transfereSaldoService(Integer id1, Integer id2) {
+        try {
+            if (id1 != null && id2 != null && id1 != id2) {
+                Double novoSaldo = listaConta.resgataConta(id1).getSaldo() + listaConta.resgataConta(id2).getSaldo();
+                listaConta.transfereSaldo(id1, id2, novoSaldo);
+            }else{
+                throw new Exception("Conta inexistente ou mesma conta");
+            }
+        } catch (Exception e) {
+            System.out.println("Erro");
+        }
+    }
 }

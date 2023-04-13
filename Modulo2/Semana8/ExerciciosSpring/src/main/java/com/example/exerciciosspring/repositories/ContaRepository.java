@@ -28,4 +28,9 @@ public class ContaRepository {
     public void alteraConta(Integer id,ContaEntity novaConta) {
         this.listaContas.set(id, novaConta);
     }
+
+    public void transfereSaldo(Integer id1, Integer id2, Double novoSaldo) {
+        listaContas.get(id1).setSaldo(novoSaldo);
+        listaContas.get(id2).setSaldo(0.0);
+    }
 }

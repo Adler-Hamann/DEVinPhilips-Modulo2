@@ -40,9 +40,12 @@ public class ContaController {
     public void alteraConta(@PathVariable Integer id, @RequestBody ContaEntity novaConta) {
         servicoConta.alteraContaService(id, novaConta);
     }
-
     @PutMapping("/saldo/{id}")
     public void alterarSaldo(@PathVariable Integer id, @RequestParam Double valor) throws Exception {
         servicoConta.alteraSaldoService(id, valor);
+    }
+    @PutMapping("/transfere/{id1}/{id2}")
+    public void transfereSaldo (@PathVariable Integer id1, @PathVariable Integer id2) {
+        servicoConta.transfereSaldoService(id1, id2);
     }
 }
