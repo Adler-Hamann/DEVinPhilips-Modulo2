@@ -1,12 +1,10 @@
 package com.example.exerciciosendpoints.controllers;
 
+import com.example.exerciciosendpoints.controllers.dtos.QuizRequest;
 import com.example.exerciciosendpoints.controllers.dtos.QuizResponse;
 import com.example.exerciciosendpoints.services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,6 +14,10 @@ public class QuizController {
     @Autowired
     private QuizService servico;
 
+    @PostMapping
+    public void salvarQuiz(@RequestBody QuizRequest quiz) {
+        servico.salvarQuiz(quiz);
+    }
     @GetMapping
     public List<QuizResponse> visualizaQuizes() {
         return servico.visualizarQuizes();

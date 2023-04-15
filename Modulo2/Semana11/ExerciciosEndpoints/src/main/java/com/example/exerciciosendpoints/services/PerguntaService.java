@@ -1,5 +1,6 @@
 package com.example.exerciciosendpoints.services;
 
+import com.example.exerciciosendpoints.controllers.dtos.PerguntaRequest;
 import com.example.exerciciosendpoints.controllers.dtos.PerguntaResponse;
 import com.example.exerciciosendpoints.models.PerguntaEntity;
 import com.example.exerciciosendpoints.repositories.PerguntaRepository;
@@ -15,12 +16,13 @@ public class PerguntaService {
     @Autowired private PerguntaRepository repository;
 
 
-    /*public void salvarPergunta(PerguntaRequest pergunta) {
+    public void salvarPergunta(PerguntaRequest pergunta) {
         PerguntaEntity entidade = new PerguntaEntity();
         entidade.setTexto(pergunta.getTexto());
         entidade.setTitulo(pergunta.getTitulo());
+        entidade.setId_quiz(pergunta.getId_quiz());
         repository.save(entidade);
-    }*/
+    }
 
     public List<PerguntaResponse> visualizarPerguntas() {
         return repository.findAll().stream().map(

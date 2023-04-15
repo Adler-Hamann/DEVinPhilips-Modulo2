@@ -1,5 +1,6 @@
 package com.example.exerciciosendpoints.services;
 
+import com.example.exerciciosendpoints.controllers.dtos.QuizRequest;
 import com.example.exerciciosendpoints.controllers.dtos.QuizResponse;
 import com.example.exerciciosendpoints.models.QuizEntity;
 import com.example.exerciciosendpoints.repositories.QuizRepository;
@@ -13,6 +14,13 @@ import java.util.stream.Collectors;
 public class QuizService {
     @Autowired
     private QuizRepository repository;
+
+    public void salvarQuiz(QuizRequest quiz) {
+        QuizEntity entidade = new QuizEntity();
+        entidade.setNome(quiz.getNome());
+        entidade.setDescricao(quiz.getDescricao());
+        repository.save(entidade);
+    }
 
     public List<QuizResponse> visualizarQuizes() {
         return repository.findAll().stream().map(

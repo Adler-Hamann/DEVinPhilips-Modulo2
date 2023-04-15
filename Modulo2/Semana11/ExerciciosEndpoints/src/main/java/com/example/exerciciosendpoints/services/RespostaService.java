@@ -1,5 +1,6 @@
 package com.example.exerciciosendpoints.services;
 
+import com.example.exerciciosendpoints.controllers.dtos.RespostaRequest;
 import com.example.exerciciosendpoints.controllers.dtos.RespostaResponse;
 import com.example.exerciciosendpoints.models.RespostaEntity;
 import com.example.exerciciosendpoints.repositories.RespostaRepository;
@@ -14,6 +15,11 @@ public class RespostaService {
     @Autowired
     private RespostaRepository repository;
 
+    public void salvarResposta(RespostaRequest resposta) {
+        RespostaEntity entidade = new RespostaEntity();
+        entidade.setTexto(resposta.getTexto());
+        repository.save(entidade);
+    }
     public List<RespostaResponse> visualizarRespostas() {
         return repository.findAll().stream().map(
                         respostaEntity -> new RespostaResponse(respostaEntity.getTexto()))
@@ -23,4 +29,5 @@ public class RespostaService {
         RespostaEntity entidade = repository.findById(id).orElse(null);
         return new RespostaResponse(entidade.getTexto());
     }
+
 }
