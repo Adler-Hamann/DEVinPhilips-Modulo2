@@ -10,6 +10,8 @@ public class Produto {
     private Long id;
     private String nome;
     private String descricao;
+    private Double preco;
+    private Long categoria_id;
 
     public Long getId() {
         return id;
