@@ -1,23 +1,22 @@
 package com.example.exerciciosendpoints.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "perguntas")
 public class PerguntaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String titulo;
     private String texto;
-    private Long id_quiz;
+    @ManyToOne
+    private QuizEntity id_quiz;
 
     public PerguntaEntity() {
     }
 
-    public PerguntaEntity(Long id, String titulo, String texto, Long id_quiz) {
+    public PerguntaEntity(Long id, String titulo, String texto, QuizEntity id_quiz) {
         this.id = id;
         this.titulo = titulo;
         this.texto = texto;
@@ -48,11 +47,11 @@ public class PerguntaEntity {
         this.texto = texto;
     }
 
-    public Long getId_quiz() {
+    public QuizEntity getId_quiz() {
         return id_quiz;
     }
 
-    public void setId_quiz(Long id_quiz) {
+    public void setId_quiz(QuizEntity id_quiz) {
         this.id_quiz = id_quiz;
     }
 }

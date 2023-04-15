@@ -1,11 +1,9 @@
 package com.example.exerciciosendpoints.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "respostas")
 public class RespostaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
