@@ -9,12 +9,13 @@ public class RespostaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String texto;
-    private Long id_pergunta;
+    @ManyToOne
+    private PerguntaEntity id_pergunta;
 
     public RespostaEntity() {
     }
 
-    public RespostaEntity(Long id, String texto, Long id_pergunta) {
+    public RespostaEntity(Long id, String texto, PerguntaEntity id_pergunta) {
         this.id = id;
         this.texto = texto;
         this.id_pergunta = id_pergunta;
@@ -36,11 +37,11 @@ public class RespostaEntity {
         this.texto = texto;
     }
 
-    public Long getId_pergunta() {
+    public PerguntaEntity getId_pergunta() {
         return id_pergunta;
     }
 
-    public void setId_pergunta(Long id_pergunta) {
+    public void setId_pergunta(PerguntaEntity id_pergunta) {
         this.id_pergunta = id_pergunta;
     }
 }

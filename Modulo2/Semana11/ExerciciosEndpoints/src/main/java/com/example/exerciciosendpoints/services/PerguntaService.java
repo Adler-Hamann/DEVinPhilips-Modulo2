@@ -34,5 +34,11 @@ public class PerguntaService {
         PerguntaEntity entidade = repository.findById(id).orElse(null);
         return new PerguntaResponse(entidade.getTitulo(), entidade.getTexto());
     }
+    public List<PerguntaResponse> pegarPerguntasQuiz(Long id) {
+        return repository.findAllById_quiz(id).stream().map(
+                        perguntaentity -> new PerguntaResponse(perguntaentity.getTitulo(), perguntaentity.getTexto()))
+                .collect(Collectors.toList());
+
+    }
 
 }

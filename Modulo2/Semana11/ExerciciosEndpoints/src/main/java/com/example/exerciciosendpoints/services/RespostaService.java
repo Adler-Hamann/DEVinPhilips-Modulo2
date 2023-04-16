@@ -1,5 +1,6 @@
 package com.example.exerciciosendpoints.services;
 
+import com.example.exerciciosendpoints.controllers.dtos.PerguntaResponse;
 import com.example.exerciciosendpoints.controllers.dtos.RespostaRequest;
 import com.example.exerciciosendpoints.controllers.dtos.RespostaResponse;
 import com.example.exerciciosendpoints.models.RespostaEntity;
@@ -28,6 +29,12 @@ public class RespostaService {
     public RespostaResponse visualizarResposta(Long id) {
         RespostaEntity entidade = repository.findById(id).orElse(null);
         return new RespostaResponse(entidade.getTexto());
+    }
+
+    public List<RespostaResponse> pegarRespostasQuiz(Long id) {
+        return repository.findAllById_pergunta(id).stream().map(
+                        respostaEntity -> new RespostaResponse(respostaEntity.getTexto()))
+                .collect(Collectors.toList());
     }
 
 }

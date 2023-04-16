@@ -1,6 +1,7 @@
 package com.example.exerciciosendpoints.controllers;
 
 
+import com.example.exerciciosendpoints.controllers.dtos.PerguntaResponse;
 import com.example.exerciciosendpoints.controllers.dtos.RespostaRequest;
 import com.example.exerciciosendpoints.controllers.dtos.RespostaResponse;
 import com.example.exerciciosendpoints.services.RespostaService;
@@ -27,5 +28,10 @@ public class RespostaController {
     @GetMapping("/{id}")
     public RespostaResponse visualizaResposta(@PathVariable Long id) {
         return servico.visualizarResposta(id);
+    }
+
+    @GetMapping("/porpergunta/{id}")
+    public List<RespostaResponse> pegarRespostasQuiz(@PathVariable Long id) {
+        return servico.pegarRespostasQuiz(id);
     }
 }

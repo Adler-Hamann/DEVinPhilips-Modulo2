@@ -2,6 +2,7 @@ package com.example.exerciciosendpoints.controllers;
 
 import com.example.exerciciosendpoints.controllers.dtos.PerguntaRequest;
 import com.example.exerciciosendpoints.controllers.dtos.PerguntaResponse;
+import com.example.exerciciosendpoints.models.QuizEntity;
 import com.example.exerciciosendpoints.services.PerguntaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,11 @@ public class PerguntaController {
     @GetMapping
     public List<PerguntaResponse> visualizaPerguntas() {
         return servico.visualizarPerguntas();
+    }
+
+    @GetMapping("/porquiz/{id}")
+    public List<PerguntaResponse> pegarPerguntasQuiz(@PathVariable Long id) {
+        return servico.pegarPerguntasQuiz(id);
     }
 
     @GetMapping("/{id}")
