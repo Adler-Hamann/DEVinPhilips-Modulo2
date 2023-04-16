@@ -38,4 +38,9 @@ public class QuizService {
         entidade.setDescricao(quiz.getDescricao());
         repository.save(entidade);
     }
+
+    public void deletaQuiz(Long id) {
+        QuizEntity entidade = repository.findById(id).orElse(null);
+        repository.delete(entidade);
+    }
 }

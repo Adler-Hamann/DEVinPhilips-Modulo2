@@ -38,4 +38,9 @@ public class PerguntaController {
         servico.atualizaPergunta(id, pergunta);
     }
 
+    @DeleteMapping("/{id}")
+    public void deletaPergunta(@PathVariable Long id) {
+        servico.deletaPergunta(id);
+    }
+
 }

@@ -41,4 +41,9 @@ public class RespostaService {
         entidade.setId_pergunta(resposta.getId_pergunta());
         repository.save(entidade);
     }
+
+    public void deletaResposta(Long id) {
+        RespostaEntity entidade = repository.findById(id).orElse(null);
+        repository.delete(entidade);
+    }
 }

@@ -38,4 +38,8 @@ public class RespostaController {
     public void atualizaResposta(@PathVariable Long id, @RequestBody RespostaRequest resposta) {
         servico.atualizaResposta(id, resposta);
     }
+    @DeleteMapping("/{id}")
+    public void deletaResposta(@PathVariable Long id) {
+        servico.deletaResposta(id);
+    }
 }

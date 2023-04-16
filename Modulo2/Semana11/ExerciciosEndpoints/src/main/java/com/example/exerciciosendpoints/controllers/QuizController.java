@@ -32,4 +32,9 @@ public class QuizController {
     public void atualizaQuiz(@PathVariable Long id, @RequestBody QuizRequest quiz) {
         servico.atualizaQuiz(id, quiz);
     }
+
+    @DeleteMapping("/{id}")
+    public void deletaQuiz(@PathVariable Long id) {
+        servico.deletaQuiz(id);
+    }
 }
