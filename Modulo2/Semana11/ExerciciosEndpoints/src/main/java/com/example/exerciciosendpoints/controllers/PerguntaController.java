@@ -2,7 +2,6 @@ package com.example.exerciciosendpoints.controllers;
 
 import com.example.exerciciosendpoints.controllers.dtos.PerguntaRequest;
 import com.example.exerciciosendpoints.controllers.dtos.PerguntaResponse;
-import com.example.exerciciosendpoints.models.QuizEntity;
 import com.example.exerciciosendpoints.services.PerguntaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -34,8 +33,9 @@ public class PerguntaController {
     public PerguntaResponse visualizaPergunta(@PathVariable Long id) {
         return servico.visualizarPergunta(id);
     }
-
-
-
+    @PutMapping("/{id}")
+    public void atualizaPergunta(@PathVariable Long id, @RequestBody PerguntaRequest pergunta) {
+        servico.atualizaPergunta(id, pergunta);
+    }
 
 }

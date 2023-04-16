@@ -27,4 +27,9 @@ public class QuizController {
     public QuizResponse visualizaQuiz(@PathVariable Long id) {
         return servico.visualizarQuiz(id);
     }
+
+    @PutMapping("/{id}")
+    public void atualizaQuiz(@PathVariable Long id, @RequestBody QuizRequest quiz) {
+        servico.atualizaQuiz(id, quiz);
+    }
 }

@@ -32,4 +32,10 @@ public class QuizService {
         QuizEntity entidade = repository.findById(id).orElse(null);
         return new QuizResponse(entidade.getNome(), entidade.getDescricao());
     }
+    public void atualizaQuiz(Long id, QuizRequest quiz) {
+        QuizEntity entidade = repository.findById(id).orElse(null);
+        entidade.setNome(quiz.getNome());
+        entidade.setDescricao(quiz.getDescricao());
+        repository.save(entidade);
+    }
 }

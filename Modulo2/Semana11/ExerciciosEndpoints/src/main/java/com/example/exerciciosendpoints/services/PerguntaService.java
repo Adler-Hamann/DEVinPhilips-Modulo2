@@ -40,5 +40,12 @@ public class PerguntaService {
                 .collect(Collectors.toList());
 
     }
+    public void atualizaPergunta(Long id, PerguntaRequest pergunta) {
+        PerguntaEntity entidade = repository.findById(id).orElse(null);
+        entidade.setTexto(pergunta.getTexto());
+        entidade.setTitulo(pergunta.getTitulo());
+        entidade.setId_quiz(pergunta.getId_quiz());
+        repository.save(entidade);
+    }
 
 }

@@ -1,6 +1,5 @@
 package com.example.exerciciosendpoints.services;
 
-import com.example.exerciciosendpoints.controllers.dtos.PerguntaResponse;
 import com.example.exerciciosendpoints.controllers.dtos.RespostaRequest;
 import com.example.exerciciosendpoints.controllers.dtos.RespostaResponse;
 import com.example.exerciciosendpoints.models.RespostaEntity;
@@ -36,5 +35,10 @@ public class RespostaService {
                         respostaEntity -> new RespostaResponse(respostaEntity.getTexto()))
                 .collect(Collectors.toList());
     }
-
+    public void atualizaResposta(Long id, RespostaRequest resposta) {
+        RespostaEntity entidade = repository.findById(id).orElse(null);
+        entidade.setTexto(resposta.getTexto());
+        entidade.setId_pergunta(resposta.getId_pergunta());
+        repository.save(entidade);
+    }
 }
